@@ -13,7 +13,8 @@ installupdate(){
   if [[ "${release}" == "centos" ]]; then
   yum update -y
   fi
-  elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+  
+  if [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
   apt-get update -y
   fi
 }
