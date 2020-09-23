@@ -30,15 +30,10 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
 ————————————杂项管理————————————
  ${Green_font_prefix}21.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}23.${Font_color_suffix} 退出脚本
-————————————————————————————————" && echo
-
 
 echo
 read -p " 请输入数字 :" num
 case "$num" in
-	0)
-	Update_Shell
-	;;
 	1)
 	check_sys_bbr
 	;;
@@ -53,21 +48,6 @@ case "$num" in
 	;;
 	5)
 	check_sys_bbr2
-	;;
-	6)
-	check_sys_zen
-	;;
-	7)
-	check_sys_bbrplusnew	
-	;;
-	8)
-	gototeddysun_bbr
-	;;
-	9)
-	gototcpx
-	;;
-	10)
-	gotodd	
 	;;
 	11)
 	startbbrfq
@@ -84,22 +64,10 @@ case "$num" in
 	15)
 	startbbr2fq
 	;;
-	16)
-	startbbr2cake
-	;;
-	17)
-	startbbr2fqecn
-	;;
-	18)
-	startbbr2cakeecn
-	;;
 	21)
 	remove_all
 	;;
 	22)
-	optimizing_system
-	;;
-	23)
 	exit 1
 	;;
 	*)
