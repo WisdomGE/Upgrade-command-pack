@@ -26,7 +26,7 @@ installcurl(){
   yum update && yum install curl vim -y
   fi
   
-  elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+  if [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
   apt-get update && apt-get install curl vim -y
   fi
 }
@@ -38,7 +38,7 @@ installstatu(){
   wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
   fi
   
-  elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+  if [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
   apt-get update && apt-get install curl vim -y
   wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
   fi
@@ -52,7 +52,7 @@ installdocker(){
   sh get-docker.sh
   fi
   
-  elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+  if [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
   apt-get update && apt-get install curl vim -y
   curl -fsSL get.docker.com -o get-docker.sh
   sh get-docker.sh
@@ -68,7 +68,7 @@ installdocker0statu(){
   sh get-docker.sh
   fi
   
-  elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+  if [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
   apt-get update && apt-get install curl vim -y
   wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
   curl -fsSL get.docker.com -o get-docker.sh
