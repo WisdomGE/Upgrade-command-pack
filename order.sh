@@ -43,7 +43,7 @@ install_statu(){
 	elif [[ "${release}" == "debian" ]]; then
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 	fi
-	start_menu
+	bash status.sh c
 }
 
 #安装docker
