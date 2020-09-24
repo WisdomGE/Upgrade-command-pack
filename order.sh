@@ -192,7 +192,7 @@ case "$num" in
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-7]"
+	echo -e "${Error}:请输入正确数字 [0-10]"
 	sleep 5s
 	start_menu
 	;;
