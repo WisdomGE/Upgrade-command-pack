@@ -91,7 +91,7 @@ install_old_tcp(){
 }
 
 #运行新tcp加速
-install_old_tcp(){
+install_new_tcp(){
 	if [[ "${release}" == "centos" ]]; then
 		wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 	elif [[ "${release}" == "ubuntu" ]]; then
