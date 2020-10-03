@@ -224,7 +224,7 @@ case "$num" in
 	*)
 	clear
 	echo -e "${Error}:请输入正确数字 [0-12]"
-	sleep 5s
+	sleep 1s
 	start_menu
 	;;
 esac
