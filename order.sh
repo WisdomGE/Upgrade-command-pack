@@ -134,23 +134,48 @@ dns(){
 	fi
 }
 
+#233boy一键脚本
+233boy(){
+	if [[ "${release}" == "centos" ]]; then
+		bash <(curl -s -L https://233blog.com/v2ray.sh)
+	elif [[ "${release}" == "ubuntu" ]]; then
+		bash <(curl -s -L https://233blog.com/v2ray.sh)
+	elif [[ "${release}" == "debian" ]]; then
+		bash <(curl -s -L https://233blog.com/v2ray.sh)
+	fi
+}
+
+#soga节点对接
+soga(){
+	if [[ "${release}" == "centos" ]]; then
+		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
+	elif [[ "${release}" == "ubuntu" ]]; then
+		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
+	elif [[ "${release}" == "debian" ]]; then
+		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
+	fi
+}
 
 #开始菜单
 start_menu(){
 clear
 echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
 
-————————————Wisdom自动管理脚本————————————
+————————————系统升级与安装————————————
  ${Green_font_prefix}1.${Font_color_suffix}  更新当前系统
  ${Green_font_prefix}2.${Font_color_suffix}  安装curl vim
  ${Green_font_prefix}3.${Font_color_suffix}  安装Statu配置
  ${Green_font_prefix}4.${Font_color_suffix}  安装docker
  ${Green_font_prefix}5.${Font_color_suffix}  安装Statu配置&docker
+————————————相关配置服务——————————————
  ${Green_font_prefix}6.${Font_color_suffix}  运行旧tcp加速
  ${Green_font_prefix}7.${Font_color_suffix}  运行新tcp加速
  ${Green_font_prefix}8.${Font_color_suffix}  运行iptable端口转发
  ${Green_font_prefix}9.${Font_color_suffix}  添加虚拟内存
  ${Green_font_prefix}10.${Font_color_suffix} DNS流媒体解锁服务
+ ————————————扶梯软件相关——————————————
+ ${Green_font_prefix}11.${Font_color_suffix} 233boy一键脚本
+ ${Green_font_prefix}12.${Font_color_suffix} soga安装
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
  ————————————————————————————————" && echo
 
@@ -186,6 +211,12 @@ case "$num" in
 	;;
 	10)
 	dns
+	;;
+	11)
+	233boy
+	;;
+	12)
+	soga
 	;;
 	0)
 	exit 1
