@@ -173,11 +173,11 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}8.${Font_color_suffix}  运行iptable端口转发
  ${Green_font_prefix}9.${Font_color_suffix}  添加虚拟内存
  ${Green_font_prefix}10.${Font_color_suffix} DNS流媒体解锁服务
- ————————————扶梯软件相关——————————————
+————————————扶梯软件相关——————————————
  ${Green_font_prefix}11.${Font_color_suffix} 233boy一键脚本
  ${Green_font_prefix}12.${Font_color_suffix} soga安装
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
- ————————————————————————————————" && echo
+—————————————————————————————————————" && echo
 
 echo
 read -p " 请输入数字 :" num
