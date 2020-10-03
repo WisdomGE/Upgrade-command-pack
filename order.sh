@@ -223,7 +223,7 @@ case "$num" in
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-10]"
+	echo -e "${Error}:请输入正确数字 [0-12]"
 	sleep 5s
 	start_menu
 	;;
