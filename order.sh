@@ -49,14 +49,20 @@ install_statu(){
 #安装docker
 install_docker(){
 	if [[ "${release}" == "centos" ]]; then
-		curl -fsSL get.docker.com -o get-docker.sh
+		yum install sudo -y
+		curl -fsSL https://get.docker.com | bash -s docker
 		sh get-docker.sh
+		sudo systemctl start docker
 	elif [[ "${release}" == "ubuntu" ]]; then
+		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
+		sudo systemctl start docker
 	elif [[ "${release}" == "debian" ]]; then
+		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
+		sudo systemctl start docker
 	fi
 	start_menu
 }
