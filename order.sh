@@ -78,12 +78,15 @@ install_docker_compose(){
 	if [[ "${release}" == "centos" ]]; then
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
+		touch /root/docker-compose.yml
 	elif [[ "${release}" == "ubuntu" ]]; then
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
+		touch /root/docker-compose.yml
 	elif [[ "${release}" == "debian" ]]; then
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
+		touch /root/docker-compose.yml
 	fi
 	start_menu
 }
@@ -98,6 +101,7 @@ install_docker_statu(){
 		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
+		touch /root/docker-compose.yml
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get install sudo -y
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
@@ -106,6 +110,7 @@ install_docker_statu(){
 		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
+		touch /root/docker-compose.yml
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get install sudo -y
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
@@ -114,6 +119,7 @@ install_docker_statu(){
 		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
+		touch /root/docker-compose.yml
 	fi
 	start_menu
 }
