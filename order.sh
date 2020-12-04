@@ -52,21 +52,36 @@ install_docker(){
 		yum install sudo -y
 		curl -fsSL https://get.docker.com | bash -s docker
 		sh get-docker.sh
-		systemctl start docker
+		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
-		systemctl start docker
+		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
-		systemctl start docker
+		sudo systemctl start docker
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
+	fi
+	start_menu
+}
+
+#安装docker-compose
+install_docker_compose(){
+	if [[ "${release}" == "centos" ]]; then
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
+	elif [[ "${release}" == "ubuntu" ]]; then
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
+	elif [[ "${release}" == "debian" ]]; then
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 	fi
@@ -76,24 +91,27 @@ install_docker(){
 #安装Statu配置&docker
 install_docker_statu(){
 	if [[ "${release}" == "centos" ]]; then
+		yum install sudo -y
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
-		systemctl start docker
+		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "ubuntu" ]]; then
+		apt-get install sudo -y
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
-		systemctl start docker
+		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "debian" ]]; then
+		apt-get install sudo -y
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
-		systemctl start docker
+		sudo systemctl start docker
 		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 	fi
@@ -187,16 +205,17 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}2.${Font_color_suffix}  安装curl vim
  ${Green_font_prefix}3.${Font_color_suffix}  安装Statu配置
  ${Green_font_prefix}4.${Font_color_suffix}  安装docker
- ${Green_font_prefix}5.${Font_color_suffix}  安装Statu配置&docker
+ ${Green_font_prefix}5.${Font_color_suffix}  安装docker-compose
+ ${Green_font_prefix}6.${Font_color_suffix}  安装Statu配置&docker
 ————————————相关配置服务——————————————
- ${Green_font_prefix}6.${Font_color_suffix}  运行旧tcp加速
- ${Green_font_prefix}7.${Font_color_suffix}  运行新tcp加速
- ${Green_font_prefix}8.${Font_color_suffix}  运行iptable端口转发
- ${Green_font_prefix}9.${Font_color_suffix}  添加虚拟内存
- ${Green_font_prefix}10.${Font_color_suffix} DNS流媒体解锁服务
+ ${Green_font_prefix}11.${Font_color_suffix}  运行旧tcp加速
+ ${Green_font_prefix}12.${Font_color_suffix}  运行新tcp加速
+ ${Green_font_prefix}13.${Font_color_suffix}  运行iptable端口转发
+ ${Green_font_prefix}14.${Font_color_suffix}  添加虚拟内存
+ ${Green_font_prefix}15.${Font_color_suffix} DNS流媒体解锁服务
 ————————————扶梯软件相关——————————————
- ${Green_font_prefix}11.${Font_color_suffix} 233boy一键脚本
- ${Green_font_prefix}12.${Font_color_suffix} soga安装
+ ${Green_font_prefix}21.${Font_color_suffix} 233boy一键脚本
+ ${Green_font_prefix}22.${Font_color_suffix} soga安装
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
 —————————————————————————————————————" && echo
 
@@ -216,27 +235,30 @@ case "$num" in
 	install_docker
 	;;
 	5)
-	install_docker_statu
+	install_docker_compose
 	;;
 	6)
-	install_old_tcp
-	;;
-	7)
-	install_new_tcp
-	;;
-	8)
-	iptable
-	;;
-	9)
-	swap
-	;;
-	10)
-	dns
+	install_docker_statu
 	;;
 	11)
-	233boy
+	install_old_tcp
 	;;
 	12)
+	install_new_tcp
+	;;
+	13)
+	iptable
+	;;
+	14)
+	swap
+	;;
+	15)
+	dns
+	;;
+	21)
+	233boy
+	;;
+	22)
 	soga
 	;;
 	0)
@@ -244,7 +266,7 @@ case "$num" in
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-12]"
+	echo -e "${Error}:请输入正确数字 [0-22]"
 	sleep 1s
 	start_menu
 	;;
