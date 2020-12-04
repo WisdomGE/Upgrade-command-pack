@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 #特殊标注
-sh_ver="1.0.0"
+sh_ver="1.0.1"
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
@@ -52,17 +52,23 @@ install_docker(){
 		yum install sudo -y
 		curl -fsSL https://get.docker.com | bash -s docker
 		sh get-docker.sh
-		sudo systemctl start docker
+		systemctl start docker
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
-		sudo systemctl start docker
+		systemctl start docker
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
-		sudo systemctl start docker
+		systemctl start docker
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
 	fi
 	start_menu
 }
@@ -73,14 +79,23 @@ install_docker_statu(){
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
+		systemctl start docker
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "ubuntu" ]]; then
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
+		systemctl start docker
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "debian" ]]; then
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
+		systemctl start docker
+		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
 	fi
 	start_menu
 }
