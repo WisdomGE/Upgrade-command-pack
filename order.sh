@@ -214,10 +214,10 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}5.${Font_color_suffix}  安装docker-compose
  ${Green_font_prefix}6.${Font_color_suffix}  安装Statu配置&docker
 ————————————相关配置服务——————————————
- ${Green_font_prefix}11.${Font_color_suffix}  运行旧tcp加速
- ${Green_font_prefix}12.${Font_color_suffix}  运行新tcp加速
- ${Green_font_prefix}13.${Font_color_suffix}  运行iptable端口转发
- ${Green_font_prefix}14.${Font_color_suffix}  添加虚拟内存
+ ${Green_font_prefix}11.${Font_color_suffix} 运行旧tcp加速
+ ${Green_font_prefix}12.${Font_color_suffix} 运行新tcp加速
+ ${Green_font_prefix}13.${Font_color_suffix} 运行iptable端口转发
+ ${Green_font_prefix}14.${Font_color_suffix} 添加虚拟内存
  ${Green_font_prefix}15.${Font_color_suffix} DNS流媒体解锁服务
 ————————————扶梯软件相关——————————————
  ${Green_font_prefix}21.${Font_color_suffix} 233boy一键脚本
