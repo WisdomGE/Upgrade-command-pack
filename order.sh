@@ -25,11 +25,11 @@ update(){
 #安装curl
 install_curl(){
 	if [[ "${release}" == "centos" ]]; then
-		yum update && yum install curl vim -y
+		yum update && yum install curl vim sudo -y
 	elif [[ "${release}" == "ubuntu" ]]; then
-		apt-get update && apt-get install curl vim -y
+		apt-get update && apt-get install curl vim sudo -y
 	elif [[ "${release}" == "debian" ]]; then
-		apt-get update && apt-get install curl vim -y
+		apt-get update && apt-get install curl vim sudo -y
 	fi
 	start_menu
 }
@@ -208,7 +208,7 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
 
 ————————————系统升级与安装————————————
  ${Green_font_prefix}1.${Font_color_suffix}  更新当前系统
- ${Green_font_prefix}2.${Font_color_suffix}  安装curl vim
+ ${Green_font_prefix}2.${Font_color_suffix}  安装curl vim sudo
  ${Green_font_prefix}3.${Font_color_suffix}  安装Statu配置
  ${Green_font_prefix}4.${Font_color_suffix}  安装docker
  ${Green_font_prefix}5.${Font_color_suffix}  安装docker-compose
