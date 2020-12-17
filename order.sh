@@ -12,7 +12,7 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 #安装update
 update(){
 	if [[ "${release}" == "centos" ]]; then
-		yum update -y
+		yum -y update
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get update -y
 	elif [[ "${release}" == "debian" ]]; then
@@ -25,7 +25,7 @@ update(){
 #安装curl
 install_curl(){
 	if [[ "${release}" == "centos" ]]; then
-		yum update && yum install curl vim sudo -y
+		yum -y update && yum -y install curl vim sudo -y
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get update && apt-get install curl vim sudo -y
 	elif [[ "${release}" == "debian" ]]; then
@@ -49,7 +49,7 @@ install_statu(){
 #安装docker
 install_docker(){
 	if [[ "${release}" == "centos" ]]; then
-		yum install sudo -y
+		yum -y install sudo
 		curl -fsSL https://get.docker.com | bash -s docker
 		sh get-docker.sh
 		sudo systemctl start docker
@@ -94,7 +94,7 @@ install_docker_compose(){
 #安装Statu配置&docker
 install_docker_statu(){
 	if [[ "${release}" == "centos" ]]; then
-		yum install sudo -y
+		yum -y install sudo
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
