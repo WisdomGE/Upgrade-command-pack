@@ -201,6 +201,35 @@ soga(){
 	fi
 }
 
+#v2board正式版更新
+v2board(){
+	if [[ "${release}" == "centos" ]]; then
+		cd /www/wwwroot/wisdomcloud.tk && sh update.sh && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd
+	elif [[ "${release}" == "ubuntu" ]]; then
+		cd /www/wwwroot/wisdomcloud.tk && sh update.sh && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd
+	elif [[ "${release}" == "debian" ]]; then
+		cd /www/wwwroot/wisdomcloud.tk && sh update.sh && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd
+	fi
+}
+
+
+#v2board-dev更新
+v2board_dev(){
+	if [[ "${release}" == "centos" ]]; then
+		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd
+	elif [[ "${release}" == "ubuntu" ]]; then
+		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd
+	elif [[ "${release}" == "debian" ]]; then
+		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd
+	fi
+}
+
 #开始菜单
 start_menu(){
 clear
@@ -222,6 +251,9 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
 ————————————扶梯软件相关——————————————
  ${Green_font_prefix}21.${Font_color_suffix} 233boy一键脚本
  ${Green_font_prefix}22.${Font_color_suffix} soga安装
+ ${Green_font_prefix}23.${Font_color_suffix} v2board正式版更新
+ ${Green_font_prefix}24.${Font_color_suffix} v2board测试版更新
+————————————退出脚本——————————————————
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
 —————————————————————————————————————" && echo
 
@@ -267,12 +299,18 @@ case "$num" in
 	22)
 	soga
 	;;
+	23)
+	v2board
+	;;
+	24)
+	v2board_dev
+	;;
 	0)
 	exit 1
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-22]"
+	echo -e "${Error}:请输入正确数字 [0-24]"
 	sleep 1s
 	start_menu
 	;;
