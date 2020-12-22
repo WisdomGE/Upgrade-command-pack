@@ -13,10 +13,13 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 update(){
 	if [[ "${release}" == "centos" ]]; then
 		yum -y update
+		timedatectl set-timezone "Asia/Shanghai"
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get update -y
+		timedatectl set-timezone "Asia/Shanghai"
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get update -y
+		timedatectl set-timezone "Asia/Shanghai"
 	fi
 	start_menu
 }
@@ -26,10 +29,13 @@ update(){
 install_curl(){
 	if [[ "${release}" == "centos" ]]; then
 		yum -y update && yum -y install curl vim sudo -y
+		timedatectl set-timezone "Asia/Shanghai"
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get update && apt-get install curl vim sudo -y
+		timedatectl set-timezone "Asia/Shanghai"
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get update && apt-get install curl vim sudo -y
+		timedatectl set-timezone "Asia/Shanghai"
 	fi
 	start_menu
 }
@@ -193,10 +199,13 @@ dns(){
 #soga节点对接
 soga(){
 	if [[ "${release}" == "centos" ]]; then
+	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
 	elif [[ "${release}" == "ubuntu" ]]; then
+	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
 	elif [[ "${release}" == "debian" ]]; then
+	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
 	fi
 }
