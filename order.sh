@@ -40,6 +40,27 @@ install_curl(){
 	start_menu
 }
 
+#安装ssh
+install_ssh(){
+	if [[ "${release}" == "centos" ]]; then
+		wget -P /root/.ssh https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
+		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
+		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+		service sshd restart
+	elif [[ "${release}" == "ubuntu" ]]; then
+		wget -P /root/.ssh https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
+		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
+		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+		service sshd restart
+	elif [[ "${release}" == "debian" ]]; then
+		wget -P /root/.ssh https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
+		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
+		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+		service sshd restart
+	fi
+	start_menu
+}
+
 #安装statu
 install_statu(){
 	if [[ "${release}" == "centos" ]]; then
@@ -247,6 +268,7 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
 ————————————系统升级与安装————————————
  ${Green_font_prefix}1.${Font_color_suffix}  更新当前系统
  ${Green_font_prefix}2.${Font_color_suffix}  安装curl vim sudo
+ 
  ${Green_font_prefix}3.${Font_color_suffix}  安装Statu配置
  ${Green_font_prefix}4.${Font_color_suffix}  安装docker
  ${Green_font_prefix}5.${Font_color_suffix}  安装docker-compose
@@ -276,15 +298,18 @@ case "$num" in
 	install_curl
 	;;
 	3)
-	install_statu
+	install_ssh
 	;;
 	4)
-	install_docker
+	install_statu
 	;;
 	5)
-	install_docker_compose
+	install_docker
 	;;
 	6)
+	install_docker_compose
+	;;
+	7)
 	install_docker_statu
 	;;
 	11)
