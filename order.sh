@@ -307,6 +307,7 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}22.${Font_color_suffix} soga安装
  ${Green_font_prefix}23.${Font_color_suffix} v2board正式版更新
  ${Green_font_prefix}24.${Font_color_suffix} v2board测试版更新
+ ${Green_font_prefix}25.${Font_color_suffix} sogaのdocker-compose更新
 ————————————退出脚本——————————————————
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
 —————————————————————————————————————" && echo
