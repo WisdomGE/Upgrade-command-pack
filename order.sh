@@ -24,7 +24,6 @@ update(){
 	start_menu
 }
 
-
 #安装curl
 install_curl(){
 	if [[ "${release}" == "centos" ]]; then
