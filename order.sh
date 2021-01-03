@@ -239,13 +239,19 @@ soga(){
 #v2board正式版更新
 v2board(){
 	if [[ "${release}" == "centos" ]]; then
-		cd /www/wwwroot/wisdomcloud.tk && sh update.sh && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd /www/wwwroot/wisdomcloud.tk && sh update.sh
+		cd /www/wwwroot/wisdomcloud.tk/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
+		chmod -R 775 /www/wwwroot/wisdomcloud.tk
 		cd
 	elif [[ "${release}" == "ubuntu" ]]; then
-		cd /www/wwwroot/wisdomcloud.tk && sh update.sh && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd /www/wwwroot/wisdomcloud.tk && sh update.sh
+		cd /www/wwwroot/wisdomcloud.tk/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
+		chmod -R 775 /www/wwwroot/wisdomcloud.tk
 		cd
 	elif [[ "${release}" == "debian" ]]; then
-		cd /www/wwwroot/wisdomcloud.tk && sh update.sh && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd /www/wwwroot/wisdomcloud.tk && sh update.sh
+		cd /www/wwwroot/wisdomcloud.tk/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
+		chmod -R 775 /www/wwwroot/wisdomcloud.tk
 		cd
 	fi
 }
@@ -254,13 +260,19 @@ v2board(){
 #v2board-dev更新
 v2board_dev(){
 	if [[ "${release}" == "centos" ]]; then
-		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
+		cd /www/wwwroot/wisdomcloud.tk/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
+		chmod -R 775 /www/wwwroot/wisdomcloud.tk
 		cd
 	elif [[ "${release}" == "ubuntu" ]]; then
-		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
+		cd /www/wwwroot/wisdomcloud.tk/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
+		chmod -R 775 /www/wwwroot/wisdomcloud.tk
 		cd
 	elif [[ "${release}" == "debian" ]]; then
-		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update && chmod -R 775 /www/wwwroot/wisdomcloud.tk
+		cd /www/wwwroot/wisdomcloud.tk && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
+		cd /www/wwwroot/wisdomcloud.tk/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
+		chmod -R 775 /www/wwwroot/wisdomcloud.tk
 		cd
 	fi
 }
