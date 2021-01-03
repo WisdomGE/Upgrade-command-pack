@@ -266,6 +266,23 @@ v2board_dev(){
 	fi
 }
 
+#soga-docker更新
+soga_update(){
+	if [[ "${release}" == "centos" ]]; then
+		docker-compose pull
+		docker-compose down
+		docker-compose up -d
+	elif [[ "${release}" == "ubuntu" ]]; then
+		docker-compose pull
+		docker-compose down
+		docker-compose up -d
+	elif [[ "${release}" == "debian" ]]; then
+		docker-compose pull
+		docker-compose down
+		docker-compose up -d
+	fi
+}
+
 #开始菜单
 start_menu(){
 clear
@@ -345,12 +362,15 @@ case "$num" in
 	24)
 	v2board_dev
 	;;
+	25)
+	soga_update
+	;;
 	0)
 	exit 1
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-24]"
+	echo -e "${Error}:请输入正确数字 [0-25]"
 	sleep 1s
 	start_menu
 	;;
