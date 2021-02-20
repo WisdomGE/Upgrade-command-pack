@@ -39,33 +39,6 @@ install_curl(){
 	start_menu
 }
 
-#安装ssh
-install_ssh(){
-	if [[ "${release}" == "centos" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
-		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
-		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
-		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
-		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-		service sshd restart
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
-		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
-		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
-		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
-		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-		service sshd restart
-	elif [[ "${release}" == "debian" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
-		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
-		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
-		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
-		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-		service sshd restart
-	fi
-	start_menu
-}
-
 #安装statu
 install_statu(){
 	if [[ "${release}" == "centos" ]]; then
@@ -236,47 +209,6 @@ soga(){
 	fi
 }
 
-#v2board正式版更新
-v2board(){
-	if [[ "${release}" == "centos" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && sh update.sh
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	elif [[ "${release}" == "ubuntu" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && sh update.sh
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	elif [[ "${release}" == "debian" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && sh update.sh
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	fi
-}
-
-
-#v2board-dev更新
-v2board_dev(){
-	if [[ "${release}" == "centos" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	elif [[ "${release}" == "ubuntu" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	elif [[ "${release}" == "debian" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	fi
-}
-
 #soga-docker更新
 soga_update(){
 	if [[ "${release}" == "centos" ]]; then
@@ -302,7 +234,6 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
 ————————————系统升级与安装————————————
  ${Green_font_prefix}1.${Font_color_suffix}  更新当前系统
  ${Green_font_prefix}2.${Font_color_suffix}  安装curl vim sudo
- ${Green_font_prefix}3.${Font_color_suffix}  安装ssh
  ${Green_font_prefix}4.${Font_color_suffix}  安装Statu配置
  ${Green_font_prefix}5.${Font_color_suffix}  安装docker
  ${Green_font_prefix}6.${Font_color_suffix}  安装docker-compose
@@ -316,8 +247,6 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
 ————————————扶梯软件相关——————————————
  ${Green_font_prefix}21.${Font_color_suffix} 233boy一键脚本
  ${Green_font_prefix}22.${Font_color_suffix} soga安装
- ${Green_font_prefix}23.${Font_color_suffix} v2board正式版更新
- ${Green_font_prefix}24.${Font_color_suffix} v2board测试版更新
  ${Green_font_prefix}25.${Font_color_suffix} sogaのdocker-compose更新
 ————————————退出脚本——————————————————
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
@@ -331,9 +260,6 @@ case "$num" in
 	;;
 	2)
 	install_curl
-	;;
-	3)
-	install_ssh
 	;;
 	4)
 	install_statu
@@ -367,12 +293,6 @@ case "$num" in
 	;;
 	22)
 	soga
-	;;
-	23)
-	v2board
-	;;
-	24)
-	v2board_dev
 	;;
 	25)
 	soga_update
